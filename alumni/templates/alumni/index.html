@@ -1,0 +1,9 @@
+{% if all_albums %}
+    <ul>
+        {% for programs in all_programs %}
+        <li><a href="/alumni/{{ programs.id }}">{{ programs.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>u dont have any content</h3>
+{% endif %}
