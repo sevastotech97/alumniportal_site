@@ -1,14 +1,14 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
+from django.shortcuts import render
 from.models import Programs
 
 def index(request):
     all_programs = Programs.objects.all()
-    template = loader.get_template('alumni/index.html')
-    context = {
-        'all_programs': all_programs,
-    }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'alumni/index.html', {'all_programs': all_programs,})
 
 def detail(request, program_id):
-    return HttpResponse("<h2>Details for Album id: " + str(program_id) +"</h2>")
+    try:
+        programs = Programs.objects.get(pk=program_id)
+    except Programs.DoesNotExist:
+        raise Http404("Course does not exist")
+    return  render(request, 'alumni/detail.html', {'programs': programs})

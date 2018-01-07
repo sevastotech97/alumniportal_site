@@ -1,4 +1,5 @@
 {% if all_programs %}
+    <h3>Here are all courses:</h3>
     <ul>
         {% for programs in all_programs %}
         <li><a href="/alumni/{{ programs.id }}">{{ programs.name }}</a></li>

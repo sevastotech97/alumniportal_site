@@ -8,6 +8,6 @@ class Programs(models.Model):
         return self.program_logo+' - '+ self.name
 
 class Alumni_Prof(models.Model):
-    grad_year = models.DateField()
+    grad_year = models.DateField(blank=True, null=True)
     publication = models.DateField()
     programs = models.ForeignKey(Programs, on_delete=models.CASCADE)
